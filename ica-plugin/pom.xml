@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.jkitberatung</groupId>
+	<artifactId>ica-plugin</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>ica-plugin</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>ApacheJMeter_core</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>ApacheJMeter_components</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>jorphan</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.jvnet.com4j</groupId>
+			<artifactId>com4j</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jvnet.com4j</groupId>
+			<artifactId>maven-com4j-plugin</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.4</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<finalName>ica-plugin</finalName>
+		<plugins>
+
+			<!-- download source code in Eclipse, best practice -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+				</configuration>
+			</plugin>
+
+			<!-- Set a JDK compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+				  <!-- DO NOT include log4j.properties file in your Jar -->
+				  <excludes>
+					<exclude>**/log4j.properties</exclude>
+				  </excludes>
+				  <archive>
+					<manifest>
+						<!-- Jar file entry point -->
+						<mainClass>de.jkitberatung.App</mainClass>
+					</manifest>
+				  </archive>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+	
+</project>
